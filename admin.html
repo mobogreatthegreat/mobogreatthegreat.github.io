@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Works</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container { width: 100%; max-width: 720px; }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      animation: fadeInDown 0.5s ease both;
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #818cf8, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      background: #1e293b;
+      color: #e2e8f0;
+      border: 1px solid #334155;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.04);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .btn:hover::after { opacity: 1; }
+    .btn:active { transform: scale(0.97); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #4f46e5, #6366f1);
+      color: white;
+      border-color: #4f46e5;
+    }
+
+    .btn-green {
+      background: linear-gradient(135deg, #059669, #10b981);
+      color: white;
+      border-color: #059669;
+    }
+
+    .btn-red {
+      background: linear-gradient(135deg, #dc2626, #ef4444);
+      color: white;
+      border-color: #dc2626;
+    }
+
+    .btn-sm { padding: 0.35rem 0.7rem; font-size: 0.8rem; }
+
+    .btn-outline {
+      background: transparent;
+      color: #94a3b8;
+      border-color: #334155;
+    }
+    .btn-outline:hover { color: #e2e8f0; border-color: #6366f1; }
+
+    .btn-active {
+      background: rgba(99,102,241,0.15);
+      color: #a5b4fc;
+      border-color: #6366f1;
+    }
+
+    .actions-bar {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      animation: fadeIn 0.5s ease 0.1s both;
+      flex-wrap: wrap;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .work-card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+      animation: cardIn 0.4s ease both;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .work-card:hover {
+      border-color: #4f46e5;
+      box-shadow: 0 4px 24px rgba(79,70,229,0.1);
+    }
+
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .work-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+    }
+
+    .work-card-header .card-actions { display: flex; gap: 0.4rem; }
+
+    .field { margin-bottom: 0.75rem; }
+
+    .field label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-bottom: 0.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      padding: 0.55rem 0.75rem;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      background: #0f172a;
+      color: #e2e8f0;
+      transition: border 0.2s, box-shadow 0.2s;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+    }
+
+    .field textarea { resize: vertical; min-height: 54px; }
+
+    .desc-wrapper {
+      position: relative;
+    }
+
+    .desc-toolbar {
+      display: flex;
+      gap: 0.3rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .preview-box {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 0.55rem 0.75rem;
+      min-height: 54px;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: #cbd5e1;
+    }
+
+    .preview-box p { margin-bottom: 0.4rem; }
+    .preview-box p:last-child { margin-bottom: 0; }
+    .preview-box code {
+      background: #1e293b;
+      color: #a5b4fc;
+      padding: 0.1rem 0.35rem;
+      border-radius: 4px;
+      font-size: 0.82rem;
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    }
+    .preview-box pre {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      padding: 0.6rem 0.8rem;
+      overflow-x: auto;
+      margin: 0.4rem 0;
+    }
+    .preview-box pre code { background: none; padding: 0; border-radius: 0; }
+    .preview-box a { color: #818cf8; text-decoration: none; border-bottom: 1px solid transparent; }
+    .preview-box a:hover { border-bottom-color: #818cf8; }
+    .preview-box ul, .preview-box ol { padding-left: 1.4rem; margin: 0.3rem 0; }
+    .preview-box li { margin-bottom: 0.15rem; }
+    .preview-box blockquote {
+      border-left: 3px solid #4f46e5;
+      padding: 0.25rem 0 0.25rem 0.8rem;
+      margin: 0.4rem 0;
+      color: #94a3b8;
+      background: rgba(79,70,229,0.06);
+      border-radius: 0 6px 6px 0;
+    }
+    .preview-box img { max-width: 100%; border-radius: 6px; }
+    .preview-box hr {
+      border: none;
+      height: 1px;
+      background: #334155;
+      margin: 0.6rem 0;
+    }
+
+    .tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      align-items: center;
+    }
+
+    .tag-input {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: rgba(99,102,241,0.12);
+      border: 1px solid rgba(99,102,241,0.2);
+      color: #a5b4fc;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .tag-input:hover {
+      background: rgba(99,102,241,0.2);
+    }
+
+    .tag-input input {
+      border: none;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      padding: 0;
+      outline: none;
+      min-width: 2ch;
+    }
+
+    .tag-input .remove-tag {
+      cursor: pointer;
+      font-size: 1rem;
+      line-height: 1;
+      opacity: 0.5;
+      background: none;
+      border: none;
+      color: inherit;
+      padding: 0;
+      transition: opacity 0.15s;
+    }
+
+    .tag-input .remove-tag:hover { opacity: 1; }
+
+    .add-tag-btn {
+      background: none;
+      border: 1px dashed #475569;
+      color: #64748b;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .add-tag-btn:hover {
+      border-color: #6366f1;
+      color: #a5b4fc;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: #64748b;
+      animation: fadeIn 0.5s ease both;
+    }
+
+    .empty-state p { font-size: 1.1rem; margin-bottom: 1rem; }
+
+    .toast {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      opacity: 0;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      pointer-events: none;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .toast.error   { background: rgba(239,68,68,0.9); color: white; }
+    .toast.success { background: rgba(16,185,129,0.9); color: white; }
+
+    .save-hint {
+      font-size: 0.8rem;
+      color: #475569;
+      margin-top: 1.5rem;
+      text-align: center;
+      line-height: 1.8;
+      animation: fadeIn 0.5s ease 0.3s both;
+    }
+
+    .save-hint code {
+      background: #1e293b;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+    }
+
+    .count-badge {
+      font-size: 0.75rem;
+      color: #64748b;
+      background: #1e293b;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      border: 1px solid #334155;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Manage Works</h1>
+      <div style="display:flex;align-items:center;gap:0.5rem;">
+        <span class="count-badge" id="count-badge">0</span>
+        <button class="btn btn-green" onclick="addWork()">+ New</button>
+      </div>
+    </div>
+
+    <div class="actions-bar">
+      <button class="btn btn-primary" onclick="saveToFile()">Save to index.html</button>
+      <button class="btn" onclick="exportDownload()">Download index.html</button>
+    </div>
+
+    <div id="works-list"></div>
+
+    <div class="save-hint">
+      <strong>Save to index.html</strong> uses the File System Access API (Chrome/Edge).<br>
+      When prompted, <strong>select the <code>Homepage</code> folder</strong> to write directly.<br>
+      Fallback: use <strong>Download</strong> and manually replace the file.
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script>
+    function renderMarkdown(md) {
+      if (!md) return '';
+      let html = md;
+
+      // code blocks (must come before inline code)
+      html = html.replace(/```([\s\S]*?)```/g, (_, code) => {
+        return '<pre><code>' + code.trim().replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</code></pre>';
+      });
+
+      // inline code
+      html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+      // images
+      html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" />');
+
+      // links
+      html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+
+      // bold + italic
+      html = html.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>');
+      html = html.replace(/___(.+?)___/g, '<strong><em>$1</em></strong>');
+
+      // bold
+      html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+      html = html.replace(/__(.+?)__/g, '<strong>$1</strong>');
+
+      // italic
+      html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+      html = html.replace(/_(.+?)_/g, '<em>$1</em>');
+
+      // strikethrough
+      html = html.replace(/~~(.+?)~~/g, '<del>$1</del>');
+
+      // horizontal rules
+      html = html.replace(/^---$/gm, '<hr>');
+
+      // blockquotes
+      html = html.replace(/^&gt;\s?(.*)$/gm, '<blockquote>$1</blockquote>');
+
+      // headings
+      html = html.replace(/^######\s+(.*)$/gm, '<h6>$1</h6>');
+      html = html.replace(/^#####\s+(.*)$/gm, '<h5>$1</h5>');
+      html = html.replace(/^####\s+(.*)$/gm, '<h4>$1</h4>');
+      html = html.replace(/^###\s+(.*)$/gm, '<h3>$1</h3>');
+      html = html.replace(/^##\s+(.*)$/gm, '<h2>$1</h2>');
+      html = html.replace(/^#\s+(.*)$/gm, '<h1>$1</h1>');
+
+      // unordered lists
+      html = html.replace(/^- (.+)$/gm, '<li>$1</li>');
+      html = html.replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>');
+
+      // ordered lists
+      html = html.replace(/^\d+\. (.+)$/gm, '<li>$1</li>');
+
+      // paragraphs (double newline separators)
+      const blocks = html.split(/\n\n+/);
+      html = blocks.map(block => {
+        block = block.trim();
+        if (!block) return '';
+        if (/^<(ul|ol|h[1-6]|blockquote|pre|hr|img|table)/.test(block)) return block;
+        if (/^<\/?(ul|ol|li|h[1-6]|blockquote|pre|hr|table)/.test(block)) return block;
+        return '<p>' + block.replace(/\n/g, '<br>') + '</p>';
+      }).join('\n');
+
+      // clean empty paragraphs
+      html = html.replace(/<p>\s*<br>\s*<\/p>/g, '');
+
+      return html;
+    }
+
+    const defaultWorks = [
+      {
+        title: 'Project Alpha',
+        desc: 'A real-time dashboard for monitoring infrastructure metrics and alerts.',
+        tags: ['React', 'TypeScript'],
+        link: '#'
+      },
+      {
+        title: 'Weather CLI',
+        desc: 'A **fast** terminal-based weather app powered by the `OpenWeatherMap` API.',
+        tags: ['Go', 'CLI'],
+        link: '#'
+      },
+      {
+        title: 'Portfolio Site',
+        desc: 'Minimal personal website — built with [vanilla](https://developer.mozilla.org) HTML, CSS, and a touch of JS.',
+        tags: ['HTML', 'CSS', 'JavaScript'],
+        link: '#'
+      },
+      {
+        title: 'Task Flow',
+        desc: 'Kanban-style project management app with:\n- Drag & drop\n- Real-time sync\n- Team collaboration',
+        tags: ['Vue', 'Node.js', 'WebSocket'],
+        link: '#'
+      },
+      {
+        title: 'PyUtils',
+        desc: '> Open-source collection of Python utilities for everyday scripting.\n\nSupports `pip install pyutils` and is available on PyPI.',
+        tags: ['Python', 'PyPI'],
+        link: '#'
+      }
+    ];
+
+    let works = JSON.parse(localStorage.getItem('works')) || [...defaultWorks];
+
+    function render() {
+      const list = document.getElementById('works-list');
+      document.getElementById('count-badge').textContent = works.length;
+
+      if (works.length === 0) {
+        list.innerHTML = `
+          <div class="empty-state">
+            <p>No works yet.</p>
+            <button class="btn btn-primary" onclick="addWork()">Add your first work</button>
+          </div>
+        `;
+        return;
+      }
+
+      list.innerHTML = works.map((w, i) => {
+        const previewOpen = localStorage.getItem('preview_' + i) === 'true';
+        return `
+        <div class="work-card" style="animation-delay:${i * 0.06}s">
+          <div class="work-card-header">
+            <input value="${escapeHtml(w.title)}"
+                   oninput="works[${i}].title = this.value; saveDraft()"
+                   style="border:none;font-size:1.05rem;font-weight:600;background:transparent;color:#f1f5f9;width:50%;padding:0;outline:none;" />
+            <div class="card-actions">
+              <button class="btn btn-sm" onclick="moveUp(${i})" ${i === 0 ? 'disabled style="opacity:0.2"' : ''} title="Move up">&uarr;</button>
+              <button class="btn btn-sm" onclick="moveDown(${i})" ${i === works.length - 1 ? 'disabled style="opacity:0.2"' : ''} title="Move down">&darr;</button>
+              <button class="btn btn-sm btn-red" onclick="deleteWork(${i})" title="Delete">&times;</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Description <span style="color:#475569;font-weight:400;text-transform:none;">(markdown + HTML supported)</span></label>
+            <div class="desc-toolbar">
+              <button class="btn btn-sm ${!previewOpen ? 'btn-active' : 'btn-outline'}" onclick="setPreview(${i}, false)">Edit</button>
+              <button class="btn btn-sm ${previewOpen ? 'btn-active' : 'btn-outline'}" onclick="setPreview(${i}, true)">Preview</button>
+            </div>
+            <div class="desc-wrapper">
+              <textarea id="desc-${i}" ${previewOpen ? 'style="display:none"' : ''}
+                oninput="works[${i}].desc = this.value; saveDraft()">${escapeHtml(w.desc)}</textarea>
+              <div id="preview-${i}" class="preview-box" ${!previewOpen ? 'style="display:none"' : ''}>${renderMarkdown(w.desc)}</div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Tags</label>
+            <div class="tags-row">
+              ${(w.tags || []).map((t, ti) => `
+                <span class="tag-input">
+                  <input value="${escapeHtml(t)}"
+                         oninput="works[${i}].tags[${ti}] = this.value; saveDraft()"
+                         style="width:${Math.max(t.length + 1, 3)}ch;" />
+                  <button class="remove-tag" onclick="removeTag(${i}, ${ti})">&times;</button>
+                </span>
+              `).join('')}
+              <button class="add-tag-btn" onclick="addTag(${i})">+ tag</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Link</label>
+            <input value="${escapeHtml(w.link || '')}"
+                   oninput="works[${i}].link = this.value; saveDraft()" placeholder="https://..." />
+          </div>
+        </div>
+      `}).join('');
+    }
+
+    function setPreview(i, open) {
+      localStorage.setItem('preview_' + i, open);
+      const ta = document.getElementById('desc-' + i);
+      const pv = document.getElementById('preview-' + i);
+      if (ta && pv) {
+        ta.style.display = open ? 'none' : '';
+        pv.style.display = open ? '' : 'none';
+        if (open) pv.innerHTML = renderMarkdown(works[i].desc);
+      }
+      render();
+    }
+
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    function saveDraft() {
+      localStorage.setItem('works', JSON.stringify(works));
+    }
+
+    function addWork() {
+      works.push({ title: 'New Work', desc: '', tags: [], link: '#' });
+      saveDraft();
+      render();
+      setTimeout(() => {
+        const cards = document.querySelectorAll('.work-card');
+        if (cards.length) cards[cards.length - 1].scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
+    }
+
+    function deleteWork(i) {
+      if (!confirm('Delete "' + works[i].title + '"?')) return;
+      works.splice(i, 1);
+      saveDraft();
+      render();
+      showToast('Deleted', 'success');
+    }
+
+    function moveUp(i) {
+      if (i === 0) return;
+      [works[i - 1], works[i]] = [works[i], works[i - 1]];
+      saveDraft();
+      render();
+    }
+
+    function moveDown(i) {
+      if (i === works.length - 1) return;
+      [works[i + 1], works[i]] = [works[i], works[i + 1]];
+      saveDraft();
+      render();
+    }
+
+    function addTag(i) {
+      works[i].tags = works[i].tags || [];
+      works[i].tags.push('new');
+      saveDraft();
+      render();
+    }
+
+    function removeTag(i, ti) {
+      works[i].tags.splice(ti, 1);
+      saveDraft();
+      render();
+    }
+
+    function generateHtml() {
+      const items = works.map(w => {
+        const descHtml = renderMarkdown(w.desc);
+        const tagsHtml = (w.tags || []).map(t =>
+          '<span class="tag">' + escapeHtml(t) + '</span>'
+        ).join('\n          ');
+        const link = escapeHtml(w.link || '#');
+
+        return `      <div class="work-item">
+        <div class="work-title">${escapeHtml(w.title)}</div>
+        <div class="work-desc">${descHtml}</div>
+        <div class="work-meta">
+          ${tagsHtml}
+          <a href="${link}" class="work-link">View <span class="arrow">&rarr;</span></a>
+        </div>
+      </div>`;
+      }).join('\n\n');
+
+      return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Works</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 4rem 1rem;
+    }
+
+    .container { width: 100%; max-width: 720px; }
+
+    header {
+      margin-bottom: 3rem;
+      text-align: center;
+      animation: fadeInDown 0.6s ease both;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #818cf8, #c084fc, #f472b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s ease-in-out infinite alternate;
+      background-size: 200% 200%;
+    }
+
+    @keyframes shimmer {
+      0%   { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    header p {
+      color: #94a3b8;
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+    }
+
+    .works {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .work-item {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: default;
+      animation: cardIn 0.5s ease both;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .work-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(129,140,248,0.06), rgba(196,132,252,0.06));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    .work-item:hover::before { opacity: 1; }
+
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(24px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .work-item:nth-child(1) { animation-delay: 0.05s; }
+    .work-item:nth-child(2) { animation-delay: 0.10s; }
+    .work-item:nth-child(3) { animation-delay: 0.15s; }
+    .work-item:nth-child(4) { animation-delay: 0.20s; }
+    .work-item:nth-child(5) { animation-delay: 0.25s; }
+    .work-item:nth-child(6) { animation-delay: 0.30s; }
+    .work-item:nth-child(7) { animation-delay: 0.35s; }
+    .work-item:nth-child(8) { animation-delay: 0.40s; }
+
+    .work-item:hover {
+      border-color: #4f46e5;
+      box-shadow: 0 8px 32px rgba(79,70,229,0.15);
+      transform: translateY(-2px);
+    }
+
+    .work-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #f1f5f9;
+    }
+
+    .work-desc {
+      font-size: 0.9rem;
+      color: #cbd5e1;
+      margin-top: 0.35rem;
+      line-height: 1.7;
+    }
+
+    .work-desc p { margin-bottom: 0.5rem; }
+    .work-desc p:last-child { margin-bottom: 0; }
+
+    .work-desc code {
+      background: #0f172a;
+      color: #a5b4fc;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    }
+
+    .work-desc pre {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      overflow-x: auto;
+      margin: 0.5rem 0;
+      font-size: 0.8rem;
+    }
+
+    .work-desc pre code { background: none; padding: 0; border-radius: 0; }
+
+    .work-desc a {
+      color: #818cf8;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .work-desc a:hover { border-bottom-color: #818cf8; }
+
+    .work-desc ul, .work-desc ol { padding-left: 1.5rem; margin: 0.4rem 0; }
+    .work-desc li { margin-bottom: 0.2rem; }
+
+    .work-desc blockquote {
+      border-left: 3px solid #4f46e5;
+      padding: 0.3rem 0 0.3rem 1rem;
+      margin: 0.5rem 0;
+      color: #94a3b8;
+      background: rgba(79,70,229,0.06);
+      border-radius: 0 6px 6px 0;
+    }
+
+    .work-desc img { max-width: 100%; border-radius: 8px; margin: 0.5rem 0; }
+    .work-desc hr { border: none; height: 1px; background: #334155; margin: 0.6rem 0; }
+
+    .work-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.2rem 0.65rem;
+      border-radius: 6px;
+      background: rgba(99,102,241,0.12);
+      color: #a5b4fc;
+      border: 1px solid rgba(99,102,241,0.2);
+      transition: all 0.2s ease;
+    }
+
+    .tag:hover {
+      background: rgba(99,102,241,0.2);
+      transform: translateY(-1px);
+    }
+
+    .work-link {
+      font-size: 0.85rem;
+      color: #818cf8;
+      text-decoration: none;
+      font-weight: 500;
+      margin-left: auto;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .work-link:hover {
+      color: #a5b4fc;
+      gap: 0.5rem;
+    }
+
+    .work-link .arrow {
+      display: inline-block;
+      transition: transform 0.25s ease;
+    }
+
+    .work-link:hover .arrow {
+      transform: translateX(3px);
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: #475569;
+      text-align: center;
+      animation: fadeIn 0.8s ease 0.6s both;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>My Works</h1>
+      <p>A collection of things I've built</p>
+    </header>
+
+    <div class="works">
+${items}
+    </div>
+
+    <footer>
+      &copy; ${new Date().getFullYear()} &middot; Built with care
+    </footer>
+  </div>
+</body>
+</html>`;
+    }
+
+    async function saveToFile() {
+      const html = generateHtml();
+      try {
+        if ('showDirectoryPicker' in window) {
+          const dirHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
+          const fileHandle = await dirHandle.getFileHandle('index.html', { create: true });
+          const writable = await fileHandle.createWritable();
+          await writable.write(html);
+          await writable.close();
+          showToast('index.html saved successfully!', 'success');
+        } else {
+          showToast('File System Access API not supported. Use Download instead.', 'error');
+        }
+      } catch (err) {
+        if (err.name === 'AbortError' || err.name === 'SecurityError') {
+          showToast('Save cancelled.', 'error');
+        } else {
+          showToast('Error saving: ' + err.message, 'error');
+        }
+      }
+    }
+
+    function exportDownload() {
+      const html = generateHtml();
+      const blob = new Blob([html], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'index.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast('Downloaded index.html', 'success');
+    }
+
+    function showToast(msg, type) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.className = 'toast ' + (type || '') + ' show';
+      clearTimeout(el._timer);
+      el._timer = setTimeout(() => el.classList.remove('show'), 2500);
+    }
+
+    render();
+  </script>
+</body>
+</html>`;
