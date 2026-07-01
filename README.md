@@ -1,6 +1,6 @@
 ## About Me
 
-Hi! I'm mobogreat, a random python and luau programmer! I'm also kinda okay at making websites with html and stuff!
+Hi! I'm mobogreat, a random python and luau programmer! I'm also kinda okay at making websites with html and stuff! You can view a full list of my stuff here: https://mobogreatthegreat.github.io/mobogreatthegreat/
 
 ## Things I'm working on
 
