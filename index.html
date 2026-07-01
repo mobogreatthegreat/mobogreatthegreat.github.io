@@ -25,7 +25,7 @@
       to { opacity: 1; }
     }
 
-    .container { width: 80%; max-width: 1200px; }
+    .container { width: 70%; max-width: 1000px; }
 
     header {
       margin-bottom: 2rem;
@@ -70,6 +70,7 @@
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      min-width: 0;
     }
 
     @media (min-width: 700px) {
@@ -89,15 +90,13 @@
       transition: border-color 0.3s, box-shadow 0.3s;
       display: flex;
       flex-direction: column;
+      min-width: 0;
+      overflow-wrap: break-word;
     }
 
     .work-item:hover {
       border-color: #3bc93b;
       box-shadow: 0 0 20px rgba(59, 201, 59, 0.15);
-    }
-
-    .work-item-full {
-      grid-column: 1 / -1;
     }
 
     @keyframes cardIn {
@@ -227,13 +226,13 @@
       <div class="category-group">
         <div class="category-header">Applications</div>
 
-<div class="work-item work-item-full">
+<div class="work-item">
   <div class="work-title">EUT-GPT</div>
   <div class="work-desc"><p>A desktop interface and CLI for AI conversations powered by OpenCode, themed around the Everything Upgrade Tree wiki</p></div>
   <div class="work-meta"><span class="tag">Python</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">AI</span><a href="https://github.com/mobogreatthegreat/EUT-GPT" class="work-link">View →</a></div>
 </div>
 
-<div class="work-item work-item-full">
+<div class="work-item">
   <div class="work-title">Reuse Hub</div>
   <div class="work-desc"><p>A portable desktop launcher for organizing links, executables, and console commands with colored categories all in one place</p></div>
   <div class="work-meta"><span class="tag">Python</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Tool</span><a href="https://github.com/mobogreatthegreat/Reuse-Hub" class="work-link">View →</a></div>
@@ -244,15 +243,23 @@
       <div class="category-group">
         <div class="category-header">Modules</div>
 
-<div class="work-item work-item-full">
+<div class="work-item">
   <div class="work-title">EternityNum 2 Plus (EN+)</div>
   <div class="work-desc"><p>EternityNum+ is a fast, feature-rich and backwards-compatible fork of EternityNum 2 by FoundForces, a library which aims to break the number limits of Roblox while maintaining performance.</p>
 <p>My contributions: many, MANY of the new <strong>mathematical functions</strong> included and more!</p></div>
-  <div class="work-meta"><span class="tag">Luau</span><span class="tag">Contributor</span><span class="tag">Unreleassed</span><a href="#" class="work-link">View →</a></div>
+  <div class="work-meta"><span class="tag">Luau</span><span class="tag">Math</span><span class="tag">Contributor</span><span class="tag">Unreleassed</span><a href="#" class="work-link">View →</a></div>
 </div>
 
-<div class="work-item work-item-full">
-  <div class="work-title">Quintillionth Custom Text</div>
+<div class="work-item">
+  <div class="work-title">Infinity Math (IM)</div>
+  <div class="work-desc"><p>Infinity math is a feature-rich library that aims to enable near infinite arbitrary precision math on Roblox</p>
+<p>The goal is an almost complete port of <code>numpy</code> to Roblox</p>
+<p>My contributions: literally everything</p></div>
+  <div class="work-meta"><span class="tag">Luau</span><span class="tag">Math</span><span class="tag">Unreleased</span><a href="#" class="work-link">View →</a></div>
+</div>
+
+<div class="work-item">
+  <div class="work-title">Quintillionth Custom Text (QCT)</div>
   <div class="work-desc"><p>Quintillionth Custom Text: TextLabel, but richer.</p>
 <p>My contributions: insane amount of <strong>optimizations to performance</strong></p></div>
   <div class="work-meta"><span class="tag">Luau</span><span class="tag">Contributor</span><span class="tag">Unreleased</span><a href="#" class="work-link">View →</a></div>
@@ -263,7 +270,7 @@
       <div class="category-group">
         <div class="category-header">Roblox</div>
 
-<div class="work-item work-item-full">
+<div class="work-item">
   <div class="work-title">Computational Upgrade Tree (CUT)</div>
   <div class="work-desc"><p><strong>Owner</strong> and <strong>Lead Developer</strong> of <span style="background:linear-gradient(70deg, red, orange); -webkit-background-clip:text; -webkit-text-fill-color:transparent"><strong><em>Computational Upgrade Tree</em></strong></span>, an upgrade tree but  based on computers! (unreleased)</p></div>
   <div class="work-meta"><span class="tag">Luau</span><span class="tag">Game Development</span><span class="tag">Unreleased</span><a href="#" class="work-link">View →</a></div>
@@ -285,7 +292,7 @@
   <div class="work-title">Upgrade Tree: Elemental (UT:E)</div>
   <div class="work-desc"><p><strong>Playtester</strong> for <strong><em>Upgrade Tree: Elemental</em></strong> (<strong>best incremental game on Roblox</strong>)</p>
 <p>Not a dev (for now)</p></div>
-  <div class="work-meta"><span class="tag">Playtesting</span><a href="https://www.roblox.com/games/88589569869992/Upgrade-Tree-Elemental" class="work-link">View →</a></div>
+  <div class="work-meta"><span class="tag">Playtesting</span><span class="tag">Elemental</span><a href="https://www.roblox.com/games/88589569869992/Upgrade-Tree-Elemental" class="work-link">View →</a></div>
 </div>
 
       </div>
