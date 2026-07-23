@@ -199,6 +199,84 @@
       color: #e8c85a;
     }
 
+    .featured-group {
+      grid-column: 1 / -1;
+      max-width: none;
+      border-top: 1px solid rgba(232, 200, 90, 0.15);
+      border-bottom: 1px solid rgba(232, 200, 90, 0.15);
+      background: rgba(232, 200, 90, 0.03);
+      padding: 1.5rem 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .featured-group .category-header {
+      grid-column: 1 / -1;
+      text-align: center;
+      font-size: 1rem;
+      color: #e8c85a;
+      letter-spacing: 0.2em;
+    }
+
+    .featured-group .work-item {
+      border-color: rgba(232, 200, 90, 0.4);
+      background: #191912;
+    }
+
+    .featured-group .work-item::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #e8c85a, transparent);
+    }
+
+    .featured-group .work-item::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(400px circle at var(--mx, 50%) var(--my, 50%), rgba(232, 200, 90, 0.2), transparent 50%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .featured-group .work-title {
+      color: #e8c85a;
+    }
+
+    .featured-group .work-desc {
+      color: #d4b84a;
+    }
+
+    .featured-group .tag {
+      border-color: rgba(232, 200, 90, 0.3);
+      color: #e8c85a;
+      background: rgba(232, 200, 90, 0.06);
+      transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+    }
+
+    .featured-group .tag:hover {
+      border-color: #e8c85a;
+      background: rgba(232, 200, 90, 0.15);
+      box-shadow: 0 0 12px rgba(232, 200, 90, 0.3);
+    }
+
+    .featured-group .work-link {
+      color: #e8c85a;
+    }
+
+    .featured-group .work-item:hover {
+      border-color: #e8c85a;
+      box-shadow: 0 0 30px rgba(232, 200, 90, 0.3), 0 0 60px rgba(232, 200, 90, 0.15);
+    }
+
+    .featured-separator {
+      grid-column: 1 / -1;
+      height: 0;
+    }
+
     .category-header {
       font-size: 0.65rem;
       font-weight: 700;
@@ -223,6 +301,20 @@
     </header>
 
     <div class="works">
+      <div class="category-group featured-group">
+        <div class="category-header">Featured</div>
+
+<div class="work-item" style="grid-column: 2 / span 1">
+  <div class="work-title">Echo</div>
+  <div class="work-desc"><p>"<em>My greatest project</em>"</p>
+<p>A dynamically-typed, strictly-typed and optimized programming language with a bytecode VM, x86_64 native compilation, LSP, and Luau transpiler all implemented in Python with an Echo-written stdlib.</p></div>
+  <div class="work-meta"><span class="tag">Featured</span><span class="tag">Optimized</span><span class="tag">Programming Language</span><span class="tag">Experimental</span><span class="tag">Unreleased</span><a href="#" class="work-link">View →</a></div>
+</div>
+
+      </div>
+
+      <div class="featured-separator"></div>
+
       <div class="category-group">
         <div class="category-header">Applications</div>
 
@@ -347,5 +439,22 @@
       This website kinda sucks but idk - Made by mobogreat
     </footer>
   </div>
+  <script>
+    (function() {
+      const cards = Array.from(document.querySelectorAll('.featured-group .work-item'));
+      if (cards.length === 0) return;
+      document.addEventListener('mousemove', e => {
+        cards.forEach(c => {
+          const r = c.getBoundingClientRect();
+          const marginX = r.width * 0.2;
+          const marginY = r.height * 0.2;
+          const x = Math.max(-marginX, Math.min(r.width + marginX, e.clientX - r.left));
+          const y = Math.max(-marginY, Math.min(r.height + marginY, e.clientY - r.top));
+          c.style.setProperty('--mx', x + 'px');
+          c.style.setProperty('--my', y + 'px');
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
