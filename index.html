@@ -204,10 +204,10 @@
       max-width: none;
       border-top: 1px solid rgba(232, 200, 90, 0.15);
       border-bottom: 1px solid rgba(232, 200, 90, 0.15);
-      background: rgba(232, 200, 90, 0.03);
+      background: rgba(232, 200, 90, 0.06);
       padding: 1.5rem 1.5rem;
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 1rem;
       align-items: start;
     }
@@ -269,7 +269,19 @@
 
     .featured-group .work-item:hover {
       border-color: #e8c85a;
-      box-shadow: 0 0 30px rgba(232, 200, 90, 0.3), 0 0 60px rgba(232, 200, 90, 0.15);
+      box-shadow: 0 0 15px rgba(232, 200, 90, 0.25);
+    }
+
+    @media (min-width: 700px) {
+      .featured-group .work-item:hover {
+        box-shadow: 0 0 30px rgba(232, 200, 90, 0.3), 0 0 60px rgba(232, 200, 90, 0.15);
+      }
+      .featured-group {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      .featured-group .work-item {
+        grid-column: 2 / span 1;
+      }
     }
 
     .featured-separator {
@@ -304,7 +316,7 @@
       <div class="category-group featured-group">
         <div class="category-header">Featured</div>
 
-<div class="work-item" style="grid-column: 2 / span 1">
+<div class="work-item featured-item">
   <div class="work-title">Echo</div>
   <div class="work-desc"><p>"<em>My greatest project</em>"</p>
 <p>A dynamically-typed, strictly-typed and optimized programming language with a bytecode VM, x86_64 native compilation, LSP, and Luau transpiler all implemented in Python with an Echo-written stdlib.</p></div>
