@@ -207,15 +207,9 @@
       background: rgba(232, 200, 90, 0.03);
       padding: 1.5rem 1.5rem;
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 1rem;
       align-items: start;
-    }
-
-    @media (min-width: 700px) {
-      .featured-group {
-        grid-template-columns: 1fr 1fr 1fr;
-      }
     }
 
     .featured-group .category-header {
@@ -278,16 +272,6 @@
       box-shadow: 0 0 30px rgba(232, 200, 90, 0.3), 0 0 60px rgba(232, 200, 90, 0.15);
     }
 
-    .featured-group .work-item[style*="grid-column"] {
-      grid-column: auto !important;
-    }
-
-    @media (min-width: 700px) {
-      .featured-group .work-item[style*="grid-column"] {
-        grid-column: 2 / span 1 !important;
-      }
-    }
-
     .featured-separator {
       grid-column: 1 / -1;
       height: 0;
@@ -323,8 +307,8 @@
 <div class="work-item" style="grid-column: 2 / span 1">
   <div class="work-title">Echo</div>
   <div class="work-desc"><p>"<em>My greatest project</em>"</p>
-<p>A dynamically-typed, strictly-typed and optimized programming language with a bytecode VM, x86_64 native compilation, LSP, and Luau transpiler all implemented in Python with an Echo-written stdlib.[...]
-  <div class="work-meta"><span class="tag">Featured</span><span class="tag">Optimized</span><span class="tag">Programming Language</span><span class="tag">Experimental</span><span class="tag">Unreleas[...]
+<p>A dynamically-typed, strictly-typed and optimized programming language with a bytecode VM, x86_64 native compilation, LSP, and Luau transpiler all implemented in Python with an Echo-written stdlib.</p></div>
+  <div class="work-meta"><span class="tag">Featured</span><span class="tag">Optimized</span><span class="tag">Programming Language</span><span class="tag">Experimental</span><span class="tag">Unreleased</span><a href="#" class="work-link">View →</a></div>
 </div>
 
       </div>
@@ -337,13 +321,13 @@
 <div class="work-item">
   <div class="work-title">EUT-GPT</div>
   <div class="work-desc"><p>A desktop interface and CLI for AI conversations powered by OpenCode, themed around the Everything Upgrade Tree wiki (and soon others..)</p></div>
-  <div class="work-meta"><span class="tag">Python</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">AI</span><a href="https://github.c[...]
+  <div class="work-meta"><span class="tag">Python</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">AI</span><a href="https://github.com/mobogreatthegreat/EUT-GPT" class="work-link">View →</a></div>
 </div>
 
 <div class="work-item">
   <div class="work-title">Reuse Hub</div>
   <div class="work-desc"><p>A portable desktop launcher for organizing links, executables, and console commands with colored categories all in one place!</p></div>
-  <div class="work-meta"><span class="tag">Python</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Tool</span><a href="https://github[...]
+  <div class="work-meta"><span class="tag">Python</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Tool</span><a href="https://github.com/mobogreatthegreat/Reuse-Hub" class="work-link">View →</a></div>
 </div>
 
       </div>
@@ -353,9 +337,9 @@
 
 <div class="work-item">
   <div class="work-title">EternityNum 2 Plus (EN+)</div>
-  <div class="work-desc"><p>EternityNum+ is a fast, feature-rich and backwards-compatible fork of EternityNum 2 by FoundForces, a library which aims to break the number limits of Roblox while maintain[...]
+  <div class="work-desc"><p>EternityNum+ is a fast, feature-rich and backwards-compatible fork of EternityNum 2 by FoundForces, a library which aims to break the number limits of Roblox while maintaining performance created by <strong>Everything Upgrade Tree</strong> developers.</p>
 <p>My contributions: many, MANY of the new <strong>mathematical functions</strong> included and more!</p></div>
-  <div class="work-meta"><span class="tag">Luau</span><span class="tag">Math</span><span class="tag">Contributor</span><span class="tag">Unreleassed</span><a href="#" class="work-link">View →</a></d[...]
+  <div class="work-meta"><span class="tag">Luau</span><span class="tag">Math</span><span class="tag">Contributor</span><span class="tag">Unreleassed</span><a href="#" class="work-link">View →</a></div>
 </div>
 
 <div class="work-item">
@@ -367,7 +351,7 @@
 
 <div class="work-item">
   <div class="work-title">Infinitely Eternal Math (IEM)</div>
-  <div class="work-desc"><p><strong>Infinitely Eternal Math</strong> is an <strong>optimized</strong>, <strong>cross-compatible</strong> and <strong>backwards-compatible</strong> merge of both <strong[...]
+  <div class="work-desc"><p><strong>Infinitely Eternal Math</strong> is an <strong>optimized</strong>, <strong>cross-compatible</strong> and <strong>backwards-compatible</strong> merge of both <strong>EterinityNum</strong> and <strong>Infinite Math</strong>!</p></div>
   <div class="work-meta"><span class="tag">Luau</span><span class="tag">Math</span><span class="tag">Private</span><a href="#" class="work-link">View →</a></div>
 </div>
 
@@ -375,7 +359,7 @@
   <div class="work-title">Quintillionth Custom Text (QCT)</div>
   <div class="work-desc"><p>Quintillionth Custom Text: TextLabel, but richer.</p>
 <p>My contributions: insane amount of <strong>optimizations to performance</strong></p></div>
-  <div class="work-meta"><span class="tag">Luau</span><span class="tag">Optimizations</span><span class="tag">Contributor</span><span class="tag">Unreleased</span><a href="#" class="work-link">View ��[...]
+  <div class="work-meta"><span class="tag">Luau</span><span class="tag">Optimizations</span><span class="tag">Contributor</span><span class="tag">Unreleased</span><a href="#" class="work-link">View →</a></div>
 </div>
 
 <div class="work-item">
@@ -392,26 +376,26 @@
 
 <div class="work-item">
   <div class="work-title">Computational Upgrade Tree (CUT)</div>
-  <div class="work-desc"><p><strong>Owner</strong> and <strong>Lead Developer</strong> of <span style="background:linear-gradient(70deg, red, orange); -webkit-background-clip:text; -webkit-text-fill-c[...]
+  <div class="work-desc"><p><strong>Owner</strong> and <strong>Lead Developer</strong> of <span style="background:linear-gradient(70deg, red, orange); -webkit-background-clip:text; -webkit-text-fill-color:transparent"><strong><em>Computational Upgrade Tree</em></strong></span>, an upgrade tree but  based on computers! (unreleased)</p></div>
   <div class="work-meta"><span class="tag">Luau</span><span class="tag">Game Development</span><span class="tag">Unreleased</span><a href="#" class="work-link">View →</a></div>
 </div>
 
 <div class="work-item">
   <div class="work-title">Pantone 448C Upgrade Tree (PCUT)</div>
-  <div class="work-desc"><p><strong>Owner</strong> and <strong>Lead Developer</strong> of <span style="color: rgb(74, 65, 42);"><strong><em>Pantone 448C Upgrade Tree</em></strong></span>, a game about[...]
-  <div class="work-meta"><span class="tag">Luau</span><span class="tag">Game Development</span><a href="https://www.roblox.com/games/15672663533/Pantone-448-C-Upgrade-Tree" class="work-link">View →<[...]
+  <div class="work-desc"><p><strong>Owner</strong> and <strong>Lead Developer</strong> of <span style="color: rgb(74, 65, 42);"><strong><em>Pantone 448C Upgrade Tree</em></strong></span>, a game about the <del>worst</del> best color ever!</p></div>
+  <div class="work-meta"><span class="tag">Luau</span><span class="tag">Game Development</span><a href="https://www.roblox.com/games/15672663533/Pantone-448-C-Upgrade-Tree" class="work-link">View →</a></div>
 </div>
 
 <div class="work-item">
   <div class="work-title">Slop Inc.</div>
   <div class="work-desc"><p><strong>Lead Developer</strong> of the Upgrade Tree based on currencies following the alphabet!</p></div>
-  <div class="work-meta"><span class="tag">Luau</span><span class="tag">Game Development</span><a href="https://www.roblox.com/games/136333423574192/slop-incremental" class="work-link">View →</a></d[...]
+  <div class="work-meta"><span class="tag">Luau</span><span class="tag">Game Development</span><a href="https://www.roblox.com/games/136333423574192/slop-incremental" class="work-link">View →</a></div>
 </div>
 
 <div class="work-item">
   <div class="work-title">Upgrade Tree: Elemental (UT:E)</div>
   <div class="work-desc"><p><strong>Playtester</strong> for <strong><em>Upgrade Tree: Elemental</em></strong>.</p></div>
-  <div class="work-meta"><span class="tag">Playtesting</span><span class="tag">Elemental</span><a href="https://www.roblox.com/games/88589569869992/Upgrade-Tree-Elemental" class="work-link">View →</[...]
+  <div class="work-meta"><span class="tag">Playtesting</span><span class="tag">Elemental</span><a href="https://www.roblox.com/games/88589569869992/Upgrade-Tree-Elemental" class="work-link">View →</a></div>
 </div>
 
 <div class="work-item">
@@ -435,7 +419,7 @@
 
 <div class="work-item">
   <div class="work-title">Optimizer</div>
-  <div class="work-desc"><p>Optimizer is a <strong>Roblox Plugin</strong> made to analyze your game's scripts (and more in the future!) to find unoptimized code. It also gives suggestions on how to fi[...]
+  <div class="work-desc"><p>Optimizer is a <strong>Roblox Plugin</strong> made to analyze your game's scripts (and more in the future!) to find unoptimized code. It also gives suggestions on how to fix said issues and sometimes gives the option to fix automatically!</p></div>
   <div class="work-meta"><span class="tag">Luau</span><span class="tag">Optimizations</span><span class="tag">Private</span><a href="#" class="work-link">View →</a></div>
 </div>
 
