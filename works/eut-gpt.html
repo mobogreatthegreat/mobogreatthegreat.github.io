@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EUT-GPT | mobogreat</title>
+  <meta name="description" content="EUT-GPT: A desktop interface and CLI for AI conversations powered by OpenCode, themed around the Everything Upgrade Tree wiki.">
+  <meta name="author" content="mobogreat">
+  <meta property="og:title" content="EUT-GPT | mobogreat">
+  <meta property="og:description" content="A desktop interface and CLI for AI conversations powered by OpenCode.">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <script>
+    (function () {
+      try {
+        var mode = localStorage.getItem('mobo_theme') || 'dark';
+        var light = mode === 'light' || (mode === 'auto' && window.matchMedia && !window.matchMedia('(prefers-color-scheme: dark)').matches);
+        if (light) document.documentElement.setAttribute('data-theme', 'light');
+        document.documentElement.setAttribute('data-theme-mode', mode);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-page="works">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../index.html">mobogreat</a>
+      <div class="header-right">
+        <a href="https://github.com/mobogreatthegreat" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav class="side-group" aria-label="Navigation">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="../index.html" data-nav="index">Main page</a></li>
+          <li><a href="../works.html" data-nav="works">Works</a></li>
+          <li><a href="../timeline.html" data-nav="timeline">Timeline</a></li>
+          <li><a href="../socials.html" data-nav="socials">Socials</a></li>
+          <li><a href="../recent-changes.html" data-nav="changes">Recent changes</a></li>
+        </ul>
+      </nav>
+      <nav class="side-group" aria-label="Tools">
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="https://github.com/mobogreatthegreat" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a></li>
+        </ul>
+      </nav>
+      <nav class="side-group" aria-label="Appearance">
+        <h4>Appearance</h4>
+        <ul>
+          <li><a href="#" data-theme-set="dark">Dark</a></li>
+          <li><a href="#" data-theme-set="light">Light</a></li>
+          <li><a href="#" data-theme-set="auto">Auto</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="content" id="main">
+      <nav class="page-tabs" aria-label="Pages">
+        <a href="../index.html" data-nav="index">About</a>
+        <a href="../works.html" data-nav="works">Works</a>
+        <a href="../timeline.html" data-nav="timeline">Timeline</a>
+        <a href="../socials.html" data-nav="socials">Socials</a>
+      </nav>
+
+      <article class="page">
+        <h1>EUT-GPT</h1>
+
+        <aside class="infobox">
+          <div class="infobox-title">EUT-GPT</div>
+          <div class="infobox-sub">Applications</div>
+          <table>
+            <tr><th>Category</th><td>Applications</td></tr>
+            <tr><th>Tags</th><td>Python, HTML, CSS, JavaScript, AI</td></tr>
+            <tr><th>Source</th><td><a href="https://github.com/mobogreatthegreat/EUT-GPT" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a></td></tr>
+          </table>
+        </aside>
+
+        <p>A desktop interface and CLI for AI conversations powered by OpenCode, themed around the Everything Upgrade Tree wiki (and soon others..)</p>
+
+        <h2>What it is</h2>
+        <p>It's a Python CLI and an Electron app that both talk to an OpenCode server. The launcher installs and manages OpenCode by itself on first launch, and it doesn't run any AI models of its own. OpenCode does the model stuff, EUT-GPT is just the chat interface on top.</p>
+
+        <h2>Features</h2>
+        <ul>
+          <li>Streaming responses with a typing indicator</li>
+          <li>Model switching, plus a thinking level from none up to max</li>
+          <li>Session management: rename by double-clicking, search, auto-naming</li>
+          <li>Temp chats that delete themselves when you switch away</li>
+          <li>Collapsible reasoning blocks</li>
+          <li>A CLI with a full command set, like /rename, /export and /history</li>
+          <li>Portable builds for Windows and Linux</li>
+        </ul>
+
+        <h2>Themes</h2>
+        <p>12 color schemes, each named after a baseplate from the EUT wiki. There's astronomy, hardcore, prestige and qubits, to name a few.</p>
+
+        <h2>My contributions</h2>
+        <p>Core logic, the CLI and the build system are by me. Parts of the code and docs had AI help.</p>
+
+        <h2>See also</h2>
+        <ul class="ext-links">
+          <li><a href="../works.html">Works</a> <span class="ext-desc">(The full list this page belongs to)</span></li>
+          <li><a href="https://github.com/mobogreatthegreat/EUT-GPT" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a> <span class="ext-desc">(Where the code lives)</span></li>
+        </ul>
+
+        <p class="note"><a href="../works.html">&larr; back to the full list</a></p>
+      </article>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-social">
+        <span class="footer-label">Social</span>
+        <a href="https://github.com/mobogreatthegreat" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a>
+        <a href="https://www.youtube.com/@mobogreatthegreat" target="_blank" rel="noopener noreferrer">YouTube &nearr;</a>
+        <a href="#" data-copy="mobogreatthegreat">Discord</a> <span class="ext-desc">(mobogreatthegreat)</span>
+      </div>
+      <div class="footer-bottom">
+        <span class="theme-inline">theme: <a href="#" data-theme-set="dark">dark</a> / <a href="#" data-theme-set="light">light</a> / <a href="#" data-theme-set="auto">auto</a></span>
+        <span>Last edited October 2026 &middot; Made by mobogreat</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/works-data.js"></script>
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>

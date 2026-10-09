@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--
+  GitHub Pages serves this file for unknown URLs, at any depth.
+  Paths are relative, and the script below points them back at the
+  site root when this page was triggered from a deeper URL.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    (function () {
+      if (location.protocol === 'file:') return;
+      var path = location.pathname;
+      var segments = path.split('/').filter(Boolean).length;
+      var reps = path.charAt(path.length - 1) === '/' ? segments : segments - 1;
+      if (reps > 0) {
+        var base = document.createElement('base');
+        base.href = new Array(reps + 1).join('../');
+        document.head.appendChild(base);
+        document.addEventListener('DOMContentLoaded', function () {
+          document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+            a.setAttribute('href', location.pathname + location.search + a.getAttribute('href'));
+          });
+        });
+      }
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>page not found | mobogreat</title>
+  <meta name="description" content="This page doesn't exist. Maybe it never did.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <script>
+    (function () {
+      try {
+        var mode = localStorage.getItem('mobo_theme') || 'dark';
+        var light = mode === 'light' || (mode === 'auto' && window.matchMedia && !window.matchMedia('(prefers-color-scheme: dark)').matches);
+        if (light) document.documentElement.setAttribute('data-theme', 'light');
+        document.documentElement.setAttribute('data-theme-mode', mode);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">mobogreat</a>
+      <div class="header-right">
+        <a href="https://github.com/mobogreatthegreat" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <main class="content" id="main">
+      <nav class="page-tabs" aria-label="Pages">
+        <a href="index.html">About</a>
+        <a href="works.html">Works</a>
+        <a href="timeline.html">Timeline</a>
+        <a href="socials.html">Socials</a>
+      </nav>
+
+      <article class="page">
+        <h1 class="red-link">page not found</h1>
+        <p>This page doesn't exist. Maybe it never did.</p>
+        <p>It could have been renamed, deleted, or the link that sent you here might just be wrong. If you think something should live here, tell me on one of my socials on the <a href="socials.html">Socials</a> page.</p>
+        <p class="note">Error 404: the one page on a wiki that isn't supposed to exist.</p>
+        <ul class="ext-links">
+          <li><a href="index.html">About</a> <span class="ext-desc">(The main page, where it all starts)</span></li>
+          <li><a href="works.html">Works</a> <span class="ext-desc">(Everything I've built, contributed to or tested)</span></li>
+          <li><a href="socials.html">Socials</a> <span class="ext-desc">(Other corners of the internet)</span></li>
+          <li><a href="recent-changes.html">Recent changes</a> <span class="ext-desc">(What's new around here)</span></li>
+        </ul>
+      </article>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-social">
+        <span class="footer-label">Social</span>
+        <a href="https://github.com/mobogreatthegreat" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a>
+        <a href="https://www.youtube.com/@mobogreatthegreat" target="_blank" rel="noopener noreferrer">YouTube &nearr;</a>
+        <a href="#" data-copy="mobogreatthegreat">Discord</a> <span class="ext-desc">(mobogreatthegreat)</span>
+      </div>
+      <div class="footer-bottom">
+        <span class="theme-inline">theme: <a href="#" data-theme-set="dark">dark</a> / <a href="#" data-theme-set="light">light</a> / <a href="#" data-theme-set="auto">auto</a></span>
+        <span>Last edited October 2026 &middot; Made by mobogreat</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js"></script>
+</body>
+</html>

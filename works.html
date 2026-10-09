@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>mobogreat</title>
-  <meta name="description" content="A collection of things I've built, contributed to or tested.">
+  <title>Works | mobogreat</title>
+  <meta name="description" content="Everything mobogreat has built, contributed to or tested.">
   <meta name="author" content="mobogreat">
-  <meta property="og:title" content="mobogreat">
-  <meta property="og:description" content="A collection of things I've built, contributed to or tested.">
+  <meta property="og:title" content="Works | mobogreat">
+  <meta property="og:description" content="Everything mobogreat has built, contributed to or tested.">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +25,7 @@
   </script>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body data-page="index">
+<body data-page="works">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
@@ -48,6 +48,10 @@
           <li><a href="socials.html" data-nav="socials">Socials</a></li>
           <li><a href="recent-changes.html" data-nav="changes">Recent changes</a></li>
         </ul>
+      </nav>
+      <nav class="side-group" aria-label="Contents">
+        <h4>Contents</h4>
+        <ul id="sidebar-contents"></ul>
       </nav>
       <nav class="side-group" aria-label="Tools">
         <h4>Tools</h4>
@@ -74,53 +78,13 @@
       </nav>
 
       <article class="page">
-        <h1>mobogreat</h1>
+        <h1>Works</h1>
+        <p>Everything below is stuff I've made or helped with. Most of it is Roblox; some of it isn't.</p>
 
-        <aside class="infobox">
-          <div class="infobox-title">mobogreat</div>
-          <div class="infobox-sub">Roblox Developer</div>
-          <table>
-            <tr><th>Also Known As</th><td>mobogreatthegreat</td></tr>
-            <tr><th>Languages</th><td>Luau, Python, a bit of web stuff</td></tr>
-            <tr><th>Links</th><td><a href="https://github.com/mobogreatthegreat" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a></td></tr>
-          </table>
-        </aside>
+        <div id="works-list"></div>
+        <noscript><p class="note">The list needs javascript to show up. Sorry about that.</p></noscript>
 
-        <p class="hatnote">Not to be confused with motherboards.</p>
-
-        <p>Hi, I'm <strong>mobogreat</strong> (mobogreatthegreat elsewhere). I make things for Roblox, mostly upgrade trees, libraries and plugins, plus the occasional thing that isn't Roblox at all. This site is a wiki about me, which is a weird thing to build. Oh well.</p>
-        <p>Most of what I do is in luau. I've worked on a few upgrade tree games as owner, developer, contributor or playtester. A lot of the stuff on here is unreleased or private, which isn't great for a portfolio, but it is what it is ig.</p>
-
-        <!-- shows up automatically once something visible is in the Featured category -->
-        <section id="featured-section" hidden>
-          <h2>Featured</h2>
-          <div id="featured-slot"></div>
-        </section>
-
-        <section>
-          <h2>Works</h2>
-          <p>Everything I've built, contributed to or tested lives on the <a href="works.html" data-card-title="Works" data-card-text="everything I've built, contributed to or tested.">Works</a> page. Private projects are listed there too, just without links.</p>
-        </section>
-
-        <section>
-          <h2>Links</h2>
-          <ul class="ext-links">
-            <li><a href="https://github.com/mobogreatthegreat" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a> <span class="ext-desc">(Where the code lives)</span></li>
-            <li><a href="socials.html" data-card-title="Socials" data-card-text="other corners of the internet.">Socials</a> <span class="ext-desc">(Other corners of the internet)</span></li>
-          </ul>
-        </section>
-
-        <div class="daily-row">
-          <section class="dyk" id="fact-section" hidden>
-            <h2>Did you know...</h2>
-            <p id="fact-slot"></p>
-          </section>
-          <section class="dyk" id="joke-section" hidden>
-            <h2>Joke of the day</h2>
-            <p id="joke-slot"></p>
-          </section>
-        </div>
-
+        <p class="note">If you would like to view anything I've made with the "Private" tag, contact me on the <a href="socials.html" data-card-title="Socials" data-card-text="other corners of the internet.">Socials</a> page.</p>
       </article>
     </main>
   </div>
@@ -141,7 +105,6 @@
   </footer>
 
   <script src="assets/js/works-data.js"></script>
-  <script src="assets/js/daily.js"></script>
   <script src="assets/js/site.js"></script>
 </body>
 </html>

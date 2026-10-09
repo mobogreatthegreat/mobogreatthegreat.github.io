@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reuse Hub | mobogreat</title>
+  <meta name="description" content="Reuse Hub: a portable single-exe launcher for links, executables and console commands, organized by colored categories.">
+  <meta name="author" content="mobogreat">
+  <meta property="og:title" content="Reuse Hub | mobogreat">
+  <meta property="og:description" content="Reuse Hub: a portable single-exe launcher for links, executables and console commands, organized by colored categories.">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <script>
+    (function () {
+      try {
+        var mode = localStorage.getItem('mobo_theme') || 'dark';
+        var light = mode === 'light' || (mode === 'auto' && window.matchMedia && !window.matchMedia('(prefers-color-scheme: dark)').matches);
+        if (light) document.documentElement.setAttribute('data-theme', 'light');
+        document.documentElement.setAttribute('data-theme-mode', mode);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-page="works">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../index.html">mobogreat</a>
+      <div class="header-right">
+        <a href="https://github.com/mobogreatthegreat" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav class="side-group" aria-label="Navigation">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="../index.html" data-nav="index">Main page</a></li>
+          <li><a href="../works.html" data-nav="works">Works</a></li>
+          <li><a href="../timeline.html" data-nav="timeline">Timeline</a></li>
+          <li><a href="../socials.html" data-nav="socials">Socials</a></li>
+          <li><a href="../recent-changes.html" data-nav="changes">Recent changes</a></li>
+        </ul>
+      </nav>
+      <nav class="side-group" aria-label="Tools">
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="https://github.com/mobogreatthegreat" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a></li>
+        </ul>
+      </nav>
+      <nav class="side-group" aria-label="Appearance">
+        <h4>Appearance</h4>
+        <ul>
+          <li><a href="#" data-theme-set="dark">Dark</a></li>
+          <li><a href="#" data-theme-set="light">Light</a></li>
+          <li><a href="#" data-theme-set="auto">Auto</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="content" id="main">
+      <nav class="page-tabs" aria-label="Pages">
+        <a href="../index.html" data-nav="index">About</a>
+        <a href="../works.html" data-nav="works">Works</a>
+        <a href="../timeline.html" data-nav="timeline">Timeline</a>
+        <a href="../socials.html" data-nav="socials">Socials</a>
+      </nav>
+
+      <article class="page">
+        <h1>Reuse Hub</h1>
+
+        <aside class="infobox">
+          <div class="infobox-title">Reuse Hub</div>
+          <div class="infobox-sub">Applications</div>
+          <table>
+            <tr><th>Category</th><td>Applications</td></tr>
+            <tr><th>Tags</th><td>Python, HTML, CSS, JavaScript, Tool</td></tr>
+            <tr><th>Source</th><td><a href="https://github.com/mobogreatthegreat/Reuse-Hub" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a></td></tr>
+          </table>
+        </aside>
+
+        <p>A portable single-exe launcher for links, executables, and console commands, organized by colored categories.</p>
+
+        <h2>What it is</h2>
+        <p>It's two things taped together: a Python backend (FastAPI plus SQLite) that stores your items, and an Electron app that wraps it in a dark frosted-glass window. Both get bundled into one portable exe, so there's nothing to install.</p>
+
+        <h2>Features</h2>
+        <ul>
+          <li>Launch websites, desktop apps and console commands from one place</li>
+          <li>Colored categories with a dedicated management modal</li>
+          <li>Grid and list views, with drag-and-drop reordering</li>
+          <li>Automatic icon extraction from executables, plus custom image icons</li>
+          <li>Console commands that can run in a visible terminal or silently in the background</li>
+          <li>Real-time search across names, paths and categories</li>
+          <li>Auto-update from GitHub releases</li>
+        </ul>
+
+        <h2>My contributions</h2>
+        <p>I wrote the whole thing. The backend, the database, the launch logic, the Electron app, the build script. Some parts of the code and docs had AI help, but the core logic and backend are mine.</p>
+
+        <h2>See also</h2>
+        <ul class="ext-links">
+          <li><a href="../works.html">Works</a> <span class="ext-desc">(The full list this page belongs to)</span></li>
+          <li><a href="https://github.com/mobogreatthegreat/Reuse-Hub" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a> <span class="ext-desc">(Where the code lives)</span></li>
+        </ul>
+
+        <p class="note"><a href="../works.html">&larr; back to the full list</a></p>
+      </article>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-social">
+        <span class="footer-label">Social</span>
+        <a href="https://github.com/mobogreatthegreat" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a>
+        <a href="https://www.youtube.com/@mobogreatthegreat" target="_blank" rel="noopener noreferrer">YouTube &nearr;</a>
+        <a href="#" data-copy="mobogreatthegreat">Discord</a> <span class="ext-desc">(mobogreatthegreat)</span>
+      </div>
+      <div class="footer-bottom">
+        <span class="theme-inline">theme: <a href="#" data-theme-set="dark">dark</a> / <a href="#" data-theme-set="light">light</a> / <a href="#" data-theme-set="auto">auto</a></span>
+        <span>Last edited October 2026 &middot; Made by mobogreat</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/works-data.js"></script>
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>
