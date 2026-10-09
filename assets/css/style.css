@@ -637,14 +637,14 @@ html { scrollbar-width: thin; scrollbar-color: var(--border) var(--bg); }
 
 /* ---------------- timeline ---------------- */
 
-.tl-year { position: relative; margin-top: 3rem; }
+.tl-year { position: relative; margin-top: 4rem; }
 
 .tl-year-num {
   position: absolute;
-  top: -3rem;
+  top: -4rem;
   left: .5rem;
   font-family: var(--title);
-  font-size: clamp(5rem, 16vw, 10rem);
+  font-size: clamp(4rem, 12vw, 7rem);
   font-weight: 700;
   line-height: 1;
   color: var(--text);
